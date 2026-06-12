@@ -1,0 +1,199 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * PAPPU BHAI TANKER WALE (PBTW) — Design System
+ * Palette:
+ *   Deep Royal Blue #00007A  (primary)
+ *   Dark Navy       #00103D
+ *   Light Aqua      #99E6FF
+ *   Deep Ocean Teal #092434
+ */
+
+@theme inline {
+  --font-sans: "Inter", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Plus Jakarta Sans", "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 16px);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-navy: var(--navy);
+  --color-navy-deep: var(--navy-deep);
+  --color-teal-deep: var(--teal-deep);
+  --color-sky: var(--sky);
+  --color-aqua: var(--aqua);
+  --color-surface: var(--surface);
+
+  --shadow-elegant: 0 20px 60px -20px color-mix(in oklab, var(--navy) 35%, transparent);
+  --shadow-card: 0 8px 24px -12px color-mix(in oklab, var(--navy-deep) 25%, transparent);
+  --shadow-glow: 0 0 0 1px color-mix(in oklab, var(--aqua) 35%, transparent), 0 12px 40px -8px color-mix(in oklab, var(--aqua) 40%, transparent);
+}
+
+:root {
+  --radius: 0.875rem;
+
+  /* Brand */
+  --navy: oklch(0.22 0.21 268);             /* #00007A Deep Royal Blue */
+  --navy-deep: oklch(0.17 0.13 265);        /* #00103D Dark Navy */
+  --teal-deep: oklch(0.26 0.04 235);        /* #092434 Deep Ocean Teal */
+  --aqua: oklch(0.91 0.07 220);             /* #99E6FF Light Aqua */
+  --sky: oklch(0.72 0.13 232);              /* mid sky */
+
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.17 0.05 265);
+  --surface: oklch(0.985 0.008 235);
+
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.17 0.05 265);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.17 0.05 265);
+
+  --primary: var(--navy);
+  --primary-foreground: oklch(0.99 0.003 240);
+  --secondary: oklch(0.965 0.018 230);
+  --secondary-foreground: var(--navy);
+  --muted: oklch(0.965 0.012 235);
+  --muted-foreground: oklch(0.48 0.03 255);
+  --accent: var(--aqua);
+  --accent-foreground: var(--navy-deep);
+  --destructive: oklch(0.58 0.22 27);
+  --destructive-foreground: oklch(0.99 0.003 240);
+  --border: oklch(0.91 0.014 235);
+  --input: oklch(0.93 0.014 235);
+  --ring: var(--navy);
+
+  /* Status colors */
+  --success: oklch(0.66 0.17 145);
+  --warning: oklch(0.78 0.16 75);
+  --error: oklch(0.62 0.22 27);
+
+  --gradient-hero: linear-gradient(135deg, var(--navy-deep) 0%, var(--navy) 50%, var(--teal-deep) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--navy), var(--aqua));
+  --gradient-wallet: linear-gradient(135deg, var(--navy), var(--aqua));
+  --gradient-warm: linear-gradient(135deg, var(--aqua), var(--sky));
+}
+
+.dark {
+  --background: oklch(0.14 0.04 260);
+  --foreground: oklch(0.98 0.006 230);
+  --card: oklch(0.20 0.05 260);
+  --card-foreground: oklch(0.98 0.006 230);
+  --popover: oklch(0.20 0.05 260);
+  --popover-foreground: oklch(0.98 0.006 230);
+  --primary: var(--aqua);
+  --primary-foreground: var(--navy-deep);
+  --secondary: oklch(0.26 0.05 260);
+  --secondary-foreground: oklch(0.98 0.006 230);
+  --muted: oklch(0.24 0.04 260);
+  --muted-foreground: oklch(0.74 0.03 235);
+  --accent: var(--aqua);
+  --accent-foreground: var(--navy-deep);
+  --border: oklch(1 0 0 / 12%);
+  --input: oklch(1 0 0 / 16%);
+  --ring: var(--aqua);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+}
+
+@layer utilities {
+  .bg-hero {
+    background-image: var(--gradient-hero);
+  }
+  .bg-gradient-accent {
+    background-image: var(--gradient-accent);
+  }
+  .bg-gradient-wallet {
+    background-image: var(--gradient-wallet);
+  }
+  .text-gradient-accent {
+    background-image: linear-gradient(135deg, var(--aqua), oklch(0.82 0.10 220));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .glass {
+    background-color: color-mix(in oklab, white 70%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .glass-dark {
+    background-color: color-mix(in oklab, var(--navy-deep) 60%, transparent);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+  }
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    animation: reveal-up 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+  }
+  .reveal-delay-1 { animation-delay: 0.1s; }
+  .reveal-delay-2 { animation-delay: 0.2s; }
+  .reveal-delay-3 { animation-delay: 0.3s; }
+  .reveal-delay-4 { animation-delay: 0.4s; }
+
+  @keyframes reveal-up {
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .float-slow {
+    animation: float-y 7s ease-in-out infinite;
+  }
+  @keyframes float-y {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+  }
+
+  .shimmer {
+    background: linear-gradient(110deg, transparent 35%, color-mix(in oklab, white 35%, transparent) 50%, transparent 65%);
+    background-size: 200% 100%;
+    animation: shimmer 2.4s linear infinite;
+  }
+  @keyframes shimmer {
+    to { background-position: -200% 0; }
+  }
+}
